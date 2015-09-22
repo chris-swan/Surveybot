@@ -1,4 +1,4 @@
-<html>
+<html ng-app="questionRoster">
   <head>
     <title>Survey</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -10,46 +10,35 @@
   <body>
     <div class="container">
       <div ng-controller="QuestionsCtrl">
-      <h2>Get to know your classmates!!!</h2>
-      <div>
+      <h1>Get to know your classmates!!!</h1>
+      <div class="col-md-4">
         <h4>1. What is your name?</h4>
         <form ng-submit="QuestionsFactory.addAnswer()" class="form-inline" role="form">
           <div class="form-group">
-            <input type="text" ng-model="QuestionsFactory.answerOne" class="form-control" placeholder="Enter your answer here">
+            <input type="text" ng-model="QuestionsFactory.answerOne" class="form-control" placeholder="Enter your name here">
           </div>
-        </div>
-      <!-- <div>
-        <h4>2. What is your favorite activity outside of class?</h4>
-        <form ng-submit="QuestionsFactory.addAnswer()" class="form-inline" role="form">
-          <div class="form-group">
-            <input type="text" ng-model="QuestionsFactory.answerTwo" class="form-control" placeholder="Enter your answer here">
-          </div>
-          <div>
-            <h4>3. What is the Casey Heitz's favorite movie?</h4>
-            <form ng-submit="QuestionsFactory.addAnswer()" class="form-inline" role="form">
-              <div class="form-group">
-                <input type="text" ng-model="QuestionsFactory.answerThree" class="form-control" placeholder="Enter your answer here">
-              </div> -->
 
-          <button name="submit" class="btn btn-default">Submit</button>
+          <h4>2. What is your favorite activity?</h4>
+            <div class="form-group">
+              <input type="text" ng-model="QuestionsFactory.answerTwo" class="form-control" placeholder="Say something....">
+            </div>
+          </div>
+        <button name="submit" class="btn btn-default">Submit</button>
         </form>
-      </div>
+
     <div class="row">
-        <div class="col-md-12">
-            <h2 ng-show="answers.length && filtered.length">Answers to questions</h2>
-            <h2 ng-show="answers.length && !filtered.length">No answers</h2>
-            <ul>
-              <li ng-repeat="item in filtered = (answers | filter:query)">
-                  <span ng-click="editing = false" ng-hide="editing">{{item.answer}} <a ng-click="QuestionsFactory.deleteAnswer(item)">Delete</a></span>
-                  <span class="form-group" ng-show="editing" ng-submit="editing = false">
-                    <form class="form-inline" role="form">
-                      <input type="text" class="form-control input-sm" ng-model="item.answer" placeholder="question" required>
-                      <button class="btn btn-default btn-sm" type="submit">Save</button>
-                    </form>
-                  </span>
-              </li>
-            </ul>
+        <div class="col-md-6">
+            <h2 ng-show="answers.length">Answers to questions</h2>
+              <p ng-repeat="item in answers">
+
+                1.  {{item.answerOne}} <br>
+                2.  {{item.answerTwo}} <br>
+                3.
+
+              </p>
+          </div>
         </div>
+
       </div>
     </div>
   </body>
